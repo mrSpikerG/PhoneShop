@@ -1,7 +1,24 @@
 
-let count = 2;
+let count = 9;
 let page = 1;
 let categoryId = 1;
+let maxPage = 1;
+
+function checkForPagination(){
+    if(page!=1){
+        $('.page-prev').removeClass('disabled');
+    }
+    if(page==1){
+        $('.page-prev').addClass('disabled');
+    }
+
+    if(page!=maxPage){
+        $('.page-next').removeClass('disabled');
+    }
+    if(page==maxPage){
+        $('.page-next').addClass('disabled');
+    }
+}
 
 function updateTable(){
 
@@ -12,21 +29,50 @@ function updateTable(){
         type: "GET",
         url: `https://localhost:7020/api/Shop/GetPages?count=${count}&categoryId=${categoryId}`,
         success: function (response) {
-            console.log(response);
+      
             
-            $('.pagination-container').append(`<li class="page-item disabled"><p class="page-link"> Previous</p></span></li>`);
+            $('.pagination-container').append(`<li class="page-item page-prev"><p class="page-link">Previous</p></span></li>`);
             for(let i=0;i<response;i++){
-                
+               maxPage= response; 
                 // ужас конечно но пока работает всё окей
                 let classToAdd = '';
-                if(i==0){
+                if(i+1==page){
                     classToAdd = 'active';
                 }
                 //
 
                 $('.pagination-container').append(`<li class="page-item ${classToAdd}"><p class="page-link">${i+1}</p></li>`);
             }
-            $('.pagination-container').append(`<li class="page-item"><p class="page-link">Next</p></li>`);
+            $('.pagination-container').append(`<li class="page-item page-next"><p class="page-link">Next</p></li>`);
+            checkForPagination();
+            $('.page-item').click(function (e) { 
+                e.preventDefault();
+   
+                let pageId = $(this).text();
+                if(pageId==='Next'){
+                    if(page<maxPage){
+                        page++;
+                    }
+
+                    checkForPagination();
+                    updateTable(); 
+                    return;
+                }
+                if(pageId==='Previous'){
+                    if(page>1){
+                        page--;
+                    }
+
+                    checkForPagination();
+                    updateTable(); 
+                    return;
+                }
+
+              
+                page = pageId;
+                checkForPagination();
+                updateTable(); 
+            });
         }
     });
 
@@ -60,9 +106,12 @@ function updateTable(){
 
 function onDOMLoaded(){
 
-
-    updateTable();
-   
+    $('.dropdown-item').click(function (e) { 
+        e.preventDefault();
+        count = $(this).text();
+        updateTable();   
+    });
+    updateTable();   
     $.ajax({
         type: "GET",
         url: "https://localhost:7020/api/Category/Get",
