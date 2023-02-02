@@ -42,7 +42,13 @@ function onDOMLoaded(){
         
         for(let item of $('.shop-name-searching')){
            
-            console.log( item.replace('td',''));//.text().includes($('#manager-search-bar').val()));
+           
+            if(item.innerHTML.toString().toLowerCase().includes( $('#manager-search-bar').val().toLowerCase())){
+                item.parentElement.style.display ='table-row';
+            }else{
+                item.parentElement.style.display ='none';
+            }
+          
         }
        });
 
