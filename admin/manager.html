@@ -134,7 +134,7 @@
                     <div class="page-header">
                         <h3 class="page-title"> Удаление категории </h3>
                       </div>
-                    <input type="number" class="form-control col-lg-12 grid-margin stretch-card" id="manager-category-name" placeholder="Id">
+                    <input type="number" class="form-control col-lg-12 grid-margin stretch-card" id="manager-category-id" placeholder="Id">
 
                   
                     <button type="submit" class="btn btn-primary mr-2" id="manager-remove-category">Удалить</button>
@@ -142,7 +142,18 @@
                 </div>
             </div>
 
-              <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="page-header">
+                      <h3 class="page-title"> Поиск по товарам </h3>
+                    </div>
+                  <input type="text" class="form-control col-lg-12 grid-margin stretch-card" id="manager-search-bar" placeholder="Название">
+                </div>
+              </div>
+          </div>
+
+              <div class="col-lg-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Товары</h4>
@@ -157,7 +168,8 @@
                             <th class="font-weight-bold">Id категории</th>
                         </tr>
                       </thead>
-                      <tbody class="shop-container">
+                      <tbody class="shop-container" id="shop-table">
+                       
                         <tr>
                           <td>Jacob</td>
                           <td>Photoshop</td>
@@ -168,23 +180,35 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12 grid-margin stretch-card">
+              <div class="col-lg-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <div class="page-header">
-                        <h3 class="page-title"> Настройки Товара </h3>
+                        <h3 class="page-title"> Добавить товар </h3>
                       </div>
                     <input type="text" class="form-control col-lg-12 grid-margin stretch-card" id="manager-shop-name" placeholder="Название">
                     <input type="number" class="form-control col-lg-12 grid-margin stretch-card" id="manager-shop-cost" placeholder="Цена ">
                     <input type="text" class="form-control col-lg-12 stretch-card" id="manager-shop-image" placeholder="Картинка ">
                     <p>используйте проверенные хостинги картинок к примеру imgur</p>
                     <input type="text" class="form-control col-lg-12 grid-margin stretch-card" id="manager-shop-category" placeholder="Id Категории ">
-                    <button type="submit" class="btn btn-primary mr-2" id="admin-add-role">Добавить</button>
-                    <button type="submit" class="btn btn-primary mr-2" id="admin-remove-role">Удалить</button>
+                    <button type="submit" class="btn btn-primary mr-2" id="manager-add-shop">Добавить</button>
+                    
                   </div>
                 </div>
             </div>
-             
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="page-header">
+                      <h3 class="page-title"> Удаление товара </h3>
+                    </div>
+                  <input type="number" class="form-control col-lg-12 grid-margin stretch-card" id="manager-shop-id" placeholder="Id">
+
+                
+                  <button type="submit" class="btn btn-primary mr-2" id="manager-remove-shop">Удалить</button>
+                </div>
+              </div>
+          </div>
              
              
           </div>

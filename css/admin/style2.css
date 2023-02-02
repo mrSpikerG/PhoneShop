@@ -14266,4 +14266,9 @@ dl {
     margin: auto 0;
     color: #b1b1b1; }
 
+.card{
+  max-height: 600px;
+  overflow-y: auto;  
+  
+}
 /*# sourceMappingURL=style.css.map */
